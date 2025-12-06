@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project | Flow Viz Identity</title>
+    <!-- 1. Import the Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 2. Link the Theme Preset -->
+    <link rel="stylesheet" href="flow-viz-theme.css">
+    <!-- Optional: Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+        
+        <header style="margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 800;">
+                <span class="text-accent">//</span> NEW PROJECT
+            </h1>
+            <p class="text-secondary">Starter template using the Flow Viz identity.</p>
+        </header>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            
+            <!-- Card Example -->
+            <div class="card">
+                <h2 style="margin-bottom: 1rem;">Card Component</h2>
+                <p class="text-secondary" style="margin-bottom: 1.5rem;">
+                    This is a standard card container. It uses the <code>--bg-card</code> variable and has a subtle border and shadow.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn-primary">Primary Action</button>
+                    <button class="btn-secondary">Secondary</button>
+                </div>
+            </div>
+
+            <!-- Form Example -->
+            <div class="card">
+                <h2 style="margin-bottom: 1rem;">Form Elements</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div>
+                        <label class="text-secondary" style="font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Project Name</label>
+                        <input type="text" placeholder="Enter project name...">
+                    </div>
+                    <div>
+                        <label class="text-secondary" style="font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Category</label>
+                        <select>
+                            <option>Select a category...</option>
+                            <option>Web App</option>
+                            <option>Data Viz</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Example -->
+            <div class="table-container" style="grid-column: 1 / -1;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item Name</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Dashboard UI</td>
+                            <td class="text-accent">Active</td>
+                            <td>2025-12-02</td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>API Integration</td>
+                            <td class="text-secondary">Pending</td>
+                            <td>2025-12-03</td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>User Testing</td>
+                            <td class="text-secondary">Planned</td>
+                            <td>2025-12-10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

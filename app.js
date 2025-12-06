@@ -7,7 +7,7 @@ const downloads = document.getElementById('downloads');
 const clearBtn = document.getElementById('clearBtn');
 const clearBtnContainer = document.getElementById('clearBtnContainer');
 const statusMessage = document.getElementById('statusMessage');
-const dropZone = document.querySelector('.container'); // The main container as drop zone
+const dropZone = document.getElementById('dropZoneContainer'); // Updated selector
 
 let originalImage = null;
 let generatedObjectUrls = []; // To keep track of generated URLs for revocation
@@ -23,12 +23,17 @@ const ICON_SIZES = [
 function displayStatus(message, isError = false) {
   statusMessage.textContent = message;
   statusMessage.style.display = 'block';
-  statusMessage.style.backgroundColor = isError ? '#721c24' : '#155724'; // Red for error, green for success
-  statusMessage.style.color = isError ? '#f8d7da' : '#d4edda';
+  
+  // Reset classes first
+  statusMessage.className = 'status-message';
+  // Add appropriate class
+  statusMessage.classList.add(isError ? 'error' : 'success');
+  
   // Hide message after a few seconds
   setTimeout(() => {
     statusMessage.style.display = 'none';
     statusMessage.textContent = '';
+    statusMessage.className = 'status-message'; // Reset
   }, 5000);
 }
 
@@ -115,7 +120,7 @@ generateBtn.addEventListener('click', function () {
           a.href = url;
           a.download = name;
           a.textContent = `Download ${name} (${size}x${size})`;
-          a.className = 'btn btn-success download-btn';
+          a.className = 'btn-success download-btn'; // Updated class
           downloads.appendChild(a);
 
           // Increment count and check if all icons are generated
@@ -175,14 +180,52 @@ dropZone.addEventListener('drop', (e) => {
     // Only process the first file if multiple are dropped
     processFile(files[0]);
 
-    // Update file input with dropped file (optional, but good for consistency)
-    // Create a new DataTransfer object because e.dataTransfer is read-only
+    // Update file input with dropped file
     const dataTransfer = new DataTransfer();
     dataTransfer.items.add(files[0]);
     fileInput.files = dataTransfer.files;
-    // No need to manually dispatch 'change' if the fileInput change listener
-    // just calls processFile, which is now the case.
   } else {
     displayStatus('No files were dropped or an error occurred.', true);
   }
+});
+
+// --- Modal Logic ---
+
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Open Modals
+document.getElementById('aboutLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal('aboutModal');
+});
+
+document.getElementById('privacyLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal('privacyModal');
+});
+
+// Close Modals (x button)
+document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+        closeModal(btn.getAttribute('data-modal'));
+    });
+});
+
+// Close Modals (outside click)
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+        e.target.style.display = 'none';
+    }
 });

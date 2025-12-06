@@ -37,29 +37,10 @@
 }
 
 body {
-    font-family: monospace, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-primary);
     line-height: 1.6;
-    /* Sticky Footer Setup */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.layout-wrapper {
-    flex: 1; /* Grow to fill space */
-    width: 100%; /* Ensure full width for centering */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center the content */
-}
-
-footer {
-    /* No sticky specific needed here if inline style has margin-top: auto, 
-       but for cleanliness: */
-    width: 100%;
-    margin-top: auto;
 }
 
 /* UI Components */
@@ -212,91 +193,3 @@ tr:hover td {
 .text-accent { color: var(--accent-color); }
 .text-secondary { color: var(--text-secondary); }
 .text-bold { font-weight: 700; }
-
-/* ----------------------------------------------------- */
-/* SQUOOSHIFY SPECIFIC STYLES */
-/* ----------------------------------------------------- */
-
-/* Drag Over Effect */
-.card.drag-over {
-  border: 2px dashed var(--accent-color);
-  box-shadow: var(--shadow-md);
-}
-
-/* Floating Clear Button */
-.floating-clear {
-  position: fixed;
-  top: 24px;
-  right: 32px;
-  z-index: 1000;
-}
-
-/* Instructions */
-.instructions {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* File Input Override for consistency if needed */
-#fileInput {
-    padding: 2rem;
-    border: 2px dashed var(--border-color);
-    background-color: var(--bg-card-hover);
-    text-align: center;
-    color: var(--text-secondary);
-}
-
-#fileInput:hover {
-    border-color: var(--text-secondary);
-}
-
-/* Header Logo Styling */
-header img {
-    border-radius: 22%; /* App icon shape (squircle-ish) */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Deep shadow to blend */
-    border: 1px solid rgba(255,255,255,0.1); 
-}
-
-/* Status Messages */
-.status-message {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border-radius: 6px;
-  font-size: 0.9em;
-  text-align: center;
-}
-
-/* Success/Error states adapted for Dark Mode */
-.status-message.success {
-  background-color: rgba(40, 167, 69, 0.2);
-  color: #75b798;
-  border: 1px solid rgba(40, 167, 69, 0.3);
-}
-
-.status-message.error {
-  background-color: rgba(220, 53, 69, 0.2);
-  color: #ea868f;
-  border: 1px solid rgba(220, 53, 69, 0.3);
-}
-
-/* Download Buttons */
-.btn-success {
-    background-color: transparent;
-    border: 1px solid #28a745;
-    color: #28a745;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transition);
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-success:hover {
-    background-color: #28a745;
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
-}
