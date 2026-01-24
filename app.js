@@ -229,3 +229,9 @@ window.addEventListener('click', (e) => {
         e.target.style.display = 'none';
     }
 });
+
+// Update Copyright Year automatically
+const currentYearSpan = document.getElementById('currentYear');
+if (currentYearSpan) {
+    currentYearSpan.textContent = new Date().getFullYear();
+}
